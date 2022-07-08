@@ -1,5 +1,5 @@
+import { matchItem } from './util';
 import { iRow, iParam } from './type'
-import { matchItem } from './util'
 
 export function del(whereParams: iParam | iParam[]): any {
 	if (!Array.isArray(whereParams)) { whereParams = [whereParams]; }

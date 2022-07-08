@@ -1,3 +1,4 @@
+import { matchValue } from 'rh-js-methods'
 import { tBaseType, iRow, iParam } from './type'
 
 export function format(param?: iParam) {
@@ -30,7 +31,7 @@ export function matchItem(item: iRow, param: tBaseType): boolean {
 	let keyLen: number = keys.length;
 	while (keyLen--) {
 		const tempkey: string = keys[keyLen]
-		if (item[tempkey] !== param[tempkey]) {
+		if (!matchValue(item[tempkey], param[tempkey])) {
 			return false;
 		}
 	}

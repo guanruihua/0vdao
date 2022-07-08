@@ -1,10 +1,10 @@
 import { iRow, iParam } from './type'
-import { matchItem, format } from './util'
+import { format, matchItem } from './util'
 
 export function select(whereParam?: iParam): any {
 	if (!whereParam) { return this; }
 	const list = this.filter((item: iRow): iRow => {
-		if (matchItem(item, whereParam)) { return item; }
+		if(matchItem(item, whereParam)) { return item; }
 	})
 	Object.defineProperty(list, 'format', {
 		value: format,

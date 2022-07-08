@@ -6,8 +6,6 @@ import { select, selectPage } from './select'
 import { update } from './update'
 import { format } from './util'
 
-export * from './mathValue'
-
 const { enumerable } = _Decorator
 
 function initCRUD(tableData: any[]): void {
@@ -23,7 +21,7 @@ function initCRUD(tableData: any[]): void {
 
 // 简易数据临时存储实现实现
 // 生成数据库的同时生成 对应的接口 配置 , 再通过app去注册
-class VDao {
+export class VDao {
 	@enumerable(false)
 	init(tableName: string, tableData?: tTable): any {
 		if (!tableData) { tableData = []; }
@@ -44,6 +42,3 @@ class VDao {
 		return this;
 	}
 }
-
-
-export default VDao;
