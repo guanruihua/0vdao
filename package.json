@@ -1,7 +1,7 @@
 {
   "name": "rh-vr-dao",
-  "version": "0.0.1",
-  "description": "颜色console",
+  "version": "0.0.2",
+  "description": "虚拟dao",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "unpkg": "lib/",
@@ -35,7 +35,7 @@
     "node-notifier": "^8.0.2",
     "prettier": "^2.4.1",
     "rh-color": "^0.0.7",
-    "rh-js-methods": "^2.0.6",
+    "rh-js-methods": "^2.1.10",
     "rh-mock": "^1.0.1",
     "rh-test": "^0.1.5",
     "rh-ts-methods": "^0.0.2",

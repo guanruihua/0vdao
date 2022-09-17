@@ -5,8 +5,9 @@ export interface iBaseObject {
 }
 
 export type iRow = any;
+export type Row = any;
 
 export interface iParam {
 	[key: string]: tBaseType;
 }
-export type tTable = iBaseObject[];
+export type tTable = iBaseObject[]

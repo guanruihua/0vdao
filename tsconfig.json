@@ -19,6 +19,7 @@
   },
   "include": ["./src/**/*"],
   "exclude": [
+    "*.config.ts",
     "**/*/__test__/*",
     "**/*/__test__/",
     "**/*/md.ts",

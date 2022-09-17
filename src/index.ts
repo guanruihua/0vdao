@@ -1,20 +1,24 @@
 import { _Decorator } from 'rh-ts-methods'
 import { tTable } from './type'
-import { add } from './add'
-import { del } from './delete'
-import { select, selectPage } from './select'
-import { update } from './update'
+import { add, addByPath } from './add'
+import { del, delByPath } from './delete'
+import { select, selectByPath, selectPage } from './select'
+import { update, updateByPath } from './update'
 import { format } from './util'
 
 const { enumerable } = _Decorator
 
-function initCRUD(tableData: any[]): void {
+function initCRUD(tableData: tTable): void {
 	Object.defineProperties(tableData, {
 		select: { value: select },
+		selectByPath: { value: selectByPath },
 		selectPage: { value: selectPage },
 		add: { value: add },
+		addByPath: { value: addByPath },
 		update: { value: update },
+		updateByPath: { value: updateByPath },
 		del: { value: del },
+		delByPath: { value: delByPath },
 		format: { value: format }
 	})
 }

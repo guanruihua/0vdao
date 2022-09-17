@@ -1,10 +1,13 @@
 import { iRow, iParam } from './type'
 import { format, matchItem } from './util'
 
+// eslint-disable-next-line
+var eval2 = eval;
+
 export function select(whereParam?: iParam): any {
 	if (!whereParam) { return this; }
 	const list = this.filter((item: iRow): iRow => {
-		if(matchItem(item, whereParam)) { return item; }
+		if (matchItem(item, whereParam)) { return item; }
 	})
 	Object.defineProperty(list, 'format', {
 		value: format,
@@ -12,12 +15,26 @@ export function select(whereParam?: iParam): any {
 	return list;
 }
 
-export function selectPage(pageSize: number | string, pageNo: number | string, whereParam?: iParam): any {
+export function selectByPath(path: string) {
+	try {
+		// eslint-disable-next-line
+		return eval2(`${path}`)
+	} catch (error) {
+		return ''
+	}
+}
+
+
+export function selectPage(pageSize: number | string, pageNo: number | string, whereParam?: iParam): any[] {
+
 	let list: any[] = []
+
 	if (!pageSize) { pageSize = 10; }
 	if (!pageNo || !(Number(pageNo) > 1)) { pageNo = 1; }
-	const min: number = Number(pageSize) * (Number(pageNo) - 1);
-	const max: number = Number(pageSize) * Number(pageNo);
+
+	const min: number = Number(pageSize) * (Number(pageNo) - 1)
+	const max: number = Number(pageSize) * Number(pageNo)
+
 	// eslint-disable-next-line @typescript-eslint/no-this-alias
 	if (!whereParam) { list = this; }
 	else {
