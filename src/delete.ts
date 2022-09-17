@@ -2,7 +2,7 @@ import { matchItem } from './util';
 import { iRow, iParam } from './type'
 
 // eslint-disable-next-line
-var eval2 = eval;
+// var eval2 = eval;
 
 /**
  * @description 删除最外层单元格
@@ -27,7 +27,7 @@ export function del(whereParams: iParam | iParam[]): any[] {
 export function delByPath(path: string): any[] {
 	try {
 		// eslint-disable-next-line
-		eval2(`delete ${path}`)
+		eval(`delete ${path}`)
 		// eslint-disable-next-line
 	} catch (err) {
 	}

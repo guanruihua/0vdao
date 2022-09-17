@@ -1,7 +1,7 @@
 import { iRow, Row } from './type'
 
 // eslint-disable-next-line
-var eval2 = eval;
+// var eval2 = eval;
 
 export function add(row: iRow | iRow[]): any {
 	if (Array.isArray(row)) {
@@ -17,7 +17,7 @@ export function add(row: iRow | iRow[]): any {
 export function addByPath(row: Row, path?: string) {
 	if (!path) return add.bind(this)(row)
 	try {
-		eval2(`${path}.push(${JSON.stringify(row)})`)
+		eval(`${path}.push(${JSON.stringify(row)})`)
 	} catch (error) {
 		console.log(error)
 	}

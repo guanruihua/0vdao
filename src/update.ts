@@ -2,7 +2,7 @@ import { iRow, iParam, Row } from './type'
 import { matchItem } from './util'
 
 // eslint-disable-next-line
-var eval2 = eval;
+// var eval2 = eval;
 
 export function update(whereParams: iParam | iParam[], updateParam: iParam): any {
 
@@ -23,7 +23,7 @@ export function update(whereParams: iParam | iParam[], updateParam: iParam): any
 
 export function updateByPath(row: Row, path?: string) {
 	try {
-		eval2(`${path}=Object.assign(${path},${JSON.stringify(row)})`)
+		eval(`${path}=Object.assign(${path},${JSON.stringify(row)})`)
 	} catch (error) {
 		console.log(error)
 	}

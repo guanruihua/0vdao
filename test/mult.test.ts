@@ -41,15 +41,18 @@ vDao.init('_a', [{
 
 const _a = vDao['_a']
 
-_a.add({ id: 'bbb', e: 123 })
-_a.addByPath({ id: 'cccc333' }, 'this[0].c.d')
-_a.updateByPath({ id: 'eee' }, 'this[1]')
-_a.delByPath('this[1]')
+// _a.add({ id: 'bbb', e: 123s })
+// _a.addByPath({ id: 'cccc333' }, 'this[0].c.d')
+// _a.updateByPath({ id: 'eee' }, 'this[1]')
+// _a.delByPath('this[1]')
 
 // const _r = "'fjsdkjf'"
 // console.log(eval(`_a[1].id=${_r}`))
 
-console.log(JSON.stringify(_a, null, 2))
+console.log(_a.selectByPath('this[0]'))
+// console.log(eval('_a[0]'))
+
+// console.log(JSON.stringify(_a, null, 2))
 
 // logGroup('test',
 // 	vDao['a'],

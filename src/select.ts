@@ -1,8 +1,7 @@
 import { iRow, iParam } from './type'
 import { format, matchItem } from './util'
 
-// eslint-disable-next-line
-var eval2 = eval;
+
 
 export function select(whereParam?: iParam): any {
 	if (!whereParam) { return this; }
@@ -18,7 +17,7 @@ export function select(whereParam?: iParam): any {
 export function selectByPath(path: string) {
 	try {
 		// eslint-disable-next-line
-		return eval2(`${path}`)
+		return eval(path)
 	} catch (error) {
 		return ''
 	}
