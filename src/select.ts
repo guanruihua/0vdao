@@ -1,7 +1,5 @@
 import { iRow, iParam } from './type'
-import { format, matchItem } from './util'
-
-
+import { format, matchItem, getPathValue } from './util'
 
 export function select(whereParam?: iParam): any {
 	if (!whereParam) { return this; }
@@ -15,12 +13,7 @@ export function select(whereParam?: iParam): any {
 }
 
 export function selectByPath(path: string) {
-	try {
-		// eslint-disable-next-line
-		return eval(path)
-	} catch (error) {
-		return ''
-	}
+	return getPathValue(this, path)
 }
 
 

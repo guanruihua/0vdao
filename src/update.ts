@@ -1,8 +1,5 @@
 import { iRow, iParam, Row } from './type'
-import { matchItem } from './util'
-
-// eslint-disable-next-line
-// var eval2 = eval;
+import { matchItem, setPathProp } from './util'
 
 export function update(whereParams: iParam | iParam[], updateParam: iParam): any {
 
@@ -21,11 +18,7 @@ export function update(whereParams: iParam | iParam[], updateParam: iParam): any
 	return this;
 }
 
-export function updateByPath(row: Row, path?: string) {
-	try {
-		eval(`${path}=Object.assign(${path},${JSON.stringify(row)})`)
-	} catch (error) {
-		console.log(error)
-	}
+export function updateByPath(row: Row, path: string) {
+	setPathProp(this, path, row)
 	return this
 }

@@ -1,7 +1,5 @@
 import { iRow, Row } from './type'
-
-// eslint-disable-next-line
-// var eval2 = eval;
+import { setPathProp } from './util'
 
 export function add(row: iRow | iRow[]): any {
 	if (Array.isArray(row)) {
@@ -16,10 +14,6 @@ export function add(row: iRow | iRow[]): any {
 
 export function addByPath(row: Row, path?: string) {
 	if (!path) return add.bind(this)(row)
-	try {
-		eval(`${path}.push(${JSON.stringify(row)})`)
-	} catch (error) {
-		console.log(error)
-	}
+	setPathProp(this, path, row, true)
 	return this
 }
