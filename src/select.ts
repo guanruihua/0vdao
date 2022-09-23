@@ -17,7 +17,11 @@ export function selectByPath(path: string) {
 }
 
 
-export function selectPage(pageSize: number | string, pageNo: number | string, whereParam?: iParam): any[] {
+export function selectPage(
+	pageSize: number | string,
+	pageNo: number | string,
+	whereParam?: iParam
+): any {
 
 	let list: any[] = []
 

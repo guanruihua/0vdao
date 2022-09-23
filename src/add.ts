@@ -12,8 +12,8 @@ export function add(row: iRow | iRow[]): any {
 	return this;
 }
 
-export function addByPath(row: Row, path?: string) {
+export function addByPath(row: Row, path?: string, where?: Record<string, any>) {
 	if (!path) return add.bind(this)(row)
-	setPathProp(this, path, row, true)
+	setPathProp(this, { path, value: row, type: 'add', where })
 	return this
 }

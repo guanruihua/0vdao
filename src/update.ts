@@ -18,7 +18,7 @@ export function update(whereParams: iParam | iParam[], updateParam: iParam): any
 	return this;
 }
 
-export function updateByPath(row: Row, path: string) {
-	setPathProp(this, path, row)
+export function updateByPath(row: Row, path?: string, where?: Record<string, any>) {
+	setPathProp(this, { path, value: row, where, type: 'update' })
 	return this
 }

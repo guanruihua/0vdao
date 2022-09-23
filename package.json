@@ -1,6 +1,6 @@
 {
   "name": "rh-vr-dao",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "虚拟dao",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",

@@ -13,8 +13,6 @@ export function getPathValue(record: Record<string | number, any>, path: string)
 	return record;
 }
 
-
-
 function _dpp(record: Record<string | number, any>, paths: string[]) {
 
 	const path = paths[0]
@@ -49,17 +47,42 @@ export function delPathProp(record: Record<string | number, any>, path: string) 
 	return record
 }
 
+
+interface SetPathPropConfig {
+	path?: string
+	value: any
+	type?: string
+	where?: Record<string, any>
+}
+
 export function setPathProp(
-	record: Record<string | number, any>, path: string,
-	value: any, isAdd = false) {
-	if (!path) return record;
+	record: Record<string | number, any>,
+	config: SetPathPropConfig,
+) {
+	const { path, where = {}, value, type = '' } = config
+	if (path === undefined) return record;
 	const arr = path.split('.')
 	while (arr.length > 1) {
 		const index = arr.shift()
 		if (index !== undefined && record[index] !== undefined)
 			record = record[index];
 	}
-	if (Array.isArray(record[arr[0]]) && isAdd) {
+	if (Array.isArray(record[arr[0]]) && type === 'update') {
+		const result = record[arr[0]].map(item => {
+			let flag = false
+			Object.keys(where).forEach((key: string) => {
+				flag = where[key] === item[key]
+			})
+			if (flag) {
+				return { ...item, ...value }
+			}
+			return item
+		})
+
+		record[arr[0]] = result
+		return
+	}
+	if (Array.isArray(record[arr[0]]) && type === 'add') {
 		record[arr[0]].push(value)
 		return
 	}

@@ -41,24 +41,32 @@ vDao.init('_a', [{
 }])
 
 const _a = vDao['_a']
-1 && logGroup('test-add',
+_a.addByPath({ a: 'bbb' }, '0.b')
+_a.updateByPath('a', '0.b')
+_a.updateByPath(1, '0.b')
+_a.updateByPath([], '0.b')
+_a.updateByPath(undefined, '0.c.d')
+_a.updateByPath({ a: 'bbb' }, '0.b')
+_a.addByPath('a', '0.b')
+_a.delByPath('0.c.d')
+// _a.addByPath('a','0.b')
+1 && logGroup('test',
 	// _a.updateByPath('bbb', '0.id'),
 	// _a.updateByPath('bbb', '0.c.d'),
 	// _a.updateByPath({ a: 'bbb' }, '0.c.e'),
-	_a.addByPath({ a: 'bbb' }, '0.b'),
+	// _a.addByPath({ a: 'bbb' }, '0.b'),
+	_a,
 )
 
 0 && logGroup('test-update',
 	// _a.updateByPath('bbb', '0.id'),
 	// _a.updateByPath('bbb', '0.c.d'),
 	// _a.updateByPath({ a: 'bbb' }, '0.c.e'),
-	_a.updateByPath({ a: 'bbb' }, '0.b'),
 )
 
 0 && logGroup('test-del',
 	// _a.delByPath('0'),
 	// _a.delByPath('0.id'),
-	_a.delByPath('0.c.d'),
 )
 
 0 && logGroup('test-select',
