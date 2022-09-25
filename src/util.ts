@@ -2,13 +2,26 @@ import { matchValue } from 'rh-js-methods'
 import { tBaseType, iRow, iParam } from './type'
 
 
-export function getPathValue(record: Record<string | number, any>, path: string) {
+export function getPathValue(record: Record<string | number, any>, path: string, where?: Record<string, any>) {
 	if (!path) return record;
 	const arr = path.split('.')
 	while (arr.length) {
 		const index = arr.shift()
 		if (index !== undefined && record[index] !== undefined)
 			record = record[index]
+	}
+	if (where && Array.isArray(record)) {
+		for (let i = 0; i < record.length; i++) {
+			const item = record[i]
+			let flag = false
+			for(const key in where){
+				flag = where[key] === item[key]
+			}
+			if (flag) {
+				return item
+			}
+		}
+		return record
 	}
 	return record;
 }
@@ -60,19 +73,23 @@ export function setPathProp(
 	config: SetPathPropConfig,
 ) {
 	const { path, where = {}, value, type = '' } = config
-	if (path === undefined) return record;
+	if (path === '' || path === undefined) {
+		record.push(value)
+		return record
+	}
 	const arr = path.split('.')
 	while (arr.length > 1) {
 		const index = arr.shift()
 		if (index !== undefined && record[index] !== undefined)
 			record = record[index];
 	}
+	if (!arr[0]) return record
 	if (Array.isArray(record[arr[0]]) && type === 'update') {
 		const result = record[arr[0]].map(item => {
 			let flag = false
-			Object.keys(where).forEach((key: string) => {
+			for(const key in where){
 				flag = where[key] === item[key]
-			})
+			}
 			if (flag) {
 				return { ...item, ...value }
 			}
@@ -80,14 +97,14 @@ export function setPathProp(
 		})
 
 		record[arr[0]] = result
-		return
+		return record
 	}
 	if (Array.isArray(record[arr[0]]) && type === 'add') {
 		record[arr[0]].push(value)
-		return
+		return record
 	}
 	record[arr[0]] = value
-	return
+	return record
 }
 
 

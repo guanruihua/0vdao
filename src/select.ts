@@ -12,8 +12,8 @@ export function select(whereParam?: iParam): any {
 	return list;
 }
 
-export function selectByPath(path: string) {
-	return getPathValue(this, path)
+export function selectByPath(path: string, where?: Record<string, any>) {
+	return getPathValue(this, path, where)
 }
 
 
