@@ -35,7 +35,7 @@
     "node-notifier": "^8.0.2",
     "prettier": "^2.4.1",
     "rh-color": "^0.0.7",
-    "rh-js-methods": "^2.1.10",
+    "rh-js-methods": "^2.1.11",
     "rh-mock": "^1.0.1",
     "rh-test": "^0.1.5",
     "rh-ts-methods": "^0.0.2",
