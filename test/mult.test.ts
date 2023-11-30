@@ -1,12 +1,12 @@
 import { VDao } from "./index.test"
 import { getPathValue } from '../src/util'
-import { logGroup, toPathValue, } from 'rh-js-methods'
-import { Mock } from 'rh-mock'
+import { logGroup, toPathValue, } from 'abandonjs'
+import { mock } from 'mock-record'
 import { _data } from './data'
 const vDao = new VDao()
 
 vDao.init('table', [_data])
-vDao.init('a', (Mock({
+vDao.init('a', (mock({
 	"value|5-9": {
 		// name: '@name'
 		name: '@name'

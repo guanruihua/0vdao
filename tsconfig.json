@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "lib": [
-      "DOM",
-      "ESNext"
-    ],
+    "target": "ES5",
+    "lib": ["ES2015" ],
     "declaration": true,
     "sourceMap": true,
     "removeComments": true,
@@ -14,8 +11,10 @@
     "moduleResolution": "node",
     "experimentalDecorators":true,
     "baseUrl": "./src",
+    "importHelpers": false,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true
   },
   "include": ["./src/**/*"],
   "exclude": [

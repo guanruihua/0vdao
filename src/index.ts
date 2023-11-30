@@ -1,12 +1,9 @@
-import { _Decorator } from 'rh-ts-methods'
 import { tTable } from './type'
 import { add, addByPath } from './add'
 import { del, delByPath } from './delete'
 import { select, selectByPath, selectPage } from './select'
 import { update, updateByPath } from './update'
 import { format } from './util'
-
-const { enumerable } = _Decorator
 
 function initCRUD(tableData: tTable): void {
 	Object.defineProperties(tableData, {
@@ -26,14 +23,12 @@ function initCRUD(tableData: tTable): void {
 // 简易数据临时存储实现实现
 // 生成数据库的同时生成 对应的接口 配置 , 再通过app去注册
 export class VDao {
-	@enumerable(false)
 	init(tableName: string, tableData?: tTable): any {
 		if (!tableData) { tableData = []; }
 		initCRUD(tableData)
 		this[tableName] = tableData ?? []
 		return this;
 	}
-	@enumerable(false)
 	insert(tableName: string, tableData: tTable): any {
 		if (!this[tableName]) { this.init(tableName); }
 		if (Array.isArray(tableData)) {

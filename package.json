@@ -1,6 +1,6 @@
 {
-  "name": "rh-vr-dao",
-  "version": "0.0.9",
+  "name": "0vdao",
+  "version": "0.0.10",
   "description": "虚拟dao",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
@@ -30,15 +30,13 @@
     "@types/node": "^16.11.6",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
+    "abandonjs": "^3.5.0",
     "eslint": "^8.7.0",
     "lint-staged": "^12.0.3",
+    "mock-record": "^1.0.0",
     "node-notifier": "^8.0.2",
     "prettier": "^2.4.1",
     "rh-color": "^0.0.7",
-    "rh-js-methods": "^2.1.11",
-    "rh-mock": "^1.0.1",
-    "rh-test": "^0.1.5",
-    "rh-ts-methods": "^0.0.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.66.1",
     "rollup-plugin-babel": "^4.4.0",
@@ -49,9 +47,7 @@
     "ts-node": "^10.4.0",
     "ts-node-dev": "^1.1.8",
     "ts-toolbelt": "^9.6.0",
+    "tslib": "^2.6.2",
     "typescript": "^4.4.4"
-  },
-  "dependencies": {
-    "reflect-metadata": "^0.1.13"
   }
 }

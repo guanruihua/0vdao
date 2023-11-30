@@ -1,4 +1,4 @@
-import { matchValue } from 'rh-js-methods'
+import { equal } from 'abandonjs'
 import { tBaseType, iRow, iParam } from './type'
 
 
@@ -141,7 +141,7 @@ export function matchItem(item: iRow, param: tBaseType): boolean {
 	while (keyLen--) {
 
 		const tempkey: string = keys[keyLen]
-		if (!matchValue(item[tempkey], param[tempkey])) {
+		if (!equal(item[tempkey], param[tempkey])) {
 			return false;
 		}
 
